@@ -15,8 +15,11 @@
 		"react": "^16.14.0",
 		"react-bootstrap": "^1.6.0",
 		"react-dom": "^16.14.0",
+		"react-redux": "^7.2.6",
 		"react-scripts": "3.3.0",
-		"reactstrap": "^8.9.0"
+		"reactstrap": "^8.10.1",
+		"redux": "^4.1.2",
+		"redux-thunk": "^2.4.1"
 	},
 	"proxy": "http://localhost:5000",
 	"scripts": {

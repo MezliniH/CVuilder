@@ -2,6 +2,11 @@ import React from "react";
 import "./App.css";
 import Resume from "./components/Resume";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Provider} from "react-redux";
+import store from "./store/store";
+import Navbar from "./components/Navbar";
+import { loadUser } from "./store/actions/authAction";
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -24,18 +29,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function App () {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
   const classes = useStyles();
     return (
+      <Provider store={store}>
         <div className="App">
-        <AppBar position="static">
+          <AppBar position="static">
             <Toolbar>
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"><MenuIcon /></IconButton>
-                <Typography variant="h6" className={classes.title}>CV Builder</Typography>
-                <Button color="inherit" >Login</Button>
+              <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.title}>
+                CV Builder
+              </Typography>
+              <Button href="" color="inherit">
+                Login
+              </Button>
             </Toolbar>
-        </AppBar>
-        <Resume />
+          <Navbar/>  
+          </AppBar>
+          <Resume />
         </div>
+      </Provider>
     );
   }
 
